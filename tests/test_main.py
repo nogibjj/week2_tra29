@@ -1,5 +1,5 @@
 import polars as pl
-from main import descriptive_stat, visualize_data
+from src.main import descriptive_stat, visualize_data
 
 def test_descriptive_stat_mean():
     # Import the DataFrame from the CSV file
