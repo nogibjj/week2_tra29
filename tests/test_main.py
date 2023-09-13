@@ -1,21 +1,25 @@
 import polars as pl
-import matplotlib.pyplot as plt
 
-def descriptive_stat_mean(df: pl.DataFrame, col: str) -> float:
-    #return df[col].mean()
-    summary_stats = df.describe()
-    return summary_stats
-
-def visualize_data(df):
-    plt.scatter(df["mpg"], df["hp"])
-    plt.xlabel("Miles Per Gallon")
-    plt.ylabel("Horse Power")
-    plt.title("Miles per gallon changes with automible weight")
-    plt.show()
-
-
-if __name__ == '__main__':
+def test_descriptive_stat():
+    # Import the DataFrame from the CSV file
     cars = pl.read_csv(r"https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
-    print(cars.head())
-    print(descriptive_stat_mean(cars, 'mpg'))
-    visualize_data(cars)
+
+    # Calculate summary statistics using the function
+    calculated_stats = descriptive_stat(cars)
+
+    # Define expected summary statistics (you can adjust these as needed)
+    expected_stats = {
+        "summary": ["mean", "stddev"],
+        "mpg": [20.38, 6.17],  # Adjust the expected values as needed
+        "hp": [119.6, 53.91]   # Adjust the expected values as needed
+    }
+
+    # Use assert to compare the calculated stats with the expected stats
+    for col in expected_stats["summary"]:
+        for column in ["mpg", "hp"]:
+            calculated_value = calculated_stats[column].filter(pl.col("summary") == col).select(column).to_pandas().iloc[0, 0]
+            expected_value = expected_stats[column][expected_stats["summary"].index(col)]
+            assert calculated_value == expected_value
+
+if __name__ == "__main__":
+    test_descriptive_stat()
