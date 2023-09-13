@@ -1,34 +1,51 @@
-# IDS706-python-template
+# IDS706-python-template [![CI](https://github.com/nogibjj/week3_tra29/actions/workflows/python_ci_cd.yml/badge.svg)](https://github.com/nogibjj/week3_tra29/actions/workflows/python_ci_cd.yml)
 ### by Titus Robin
 
-**Summary**
+# Project Title: Analyzing Car Data with Polars
 
-The purpose of this project is using Polars to load a dataframe. I used a pl.DataFrame as a sample data and test its descriptions using the function polars_descriptive_stats_*(). The visualization on a scatter plot.
+## Purpose
 
-# Dataset 
-The [dataset](https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv) is about about various cars Models, Miles per gallon, Cylinders, Gear etc...
+The purpose of this project is to utilize the Polars library to load a DataFrame, specifically a `pl.DataFrame`, and perform various data analysis tasks. We aim to extract descriptive statistics from the dataset, visualize the data on a scatter plot, and automate these processes for seamless collaboration among team members.
 
-# Functions 
-The Polars DataFrame is passed into the functions which return:
-- Mean
+## Dataset
 
-# Visualisation
-A scatter plot is generated to compare the variables of Miles per Gallon and Horsepower
-<img width="712" alt="Screen Shot 2023-09-12 at 9 51 11 PM" src="https://github.com/nogibjj/week2_tra29/assets/143838819/ca88f222-4159-4f8e-bb82-3d3729aae623">
+The dataset used in this project consists of information about various car models, including attributes such as:
 
-Automation
-used takes into Consideration
+- Miles per gallon (mpg)
+- Number of cylinders (cylinders)
+- Gear type (gear)
+- And more...
 
-1. devcontainer
-The .devcontainer folder mainly contains two files -
+## Functions
 
-Dockerfile defines the environment variables - essentially it ensures that all collaborators using the repository are working on the same environment to avoid conflicts and version mismatch issues devcontainer.json is a json file that specifies the environment variables including the installed extensions in the virtual environment
+We have implemented several functions to extract key statistics from the Polars DataFrame. These functions include:
 
-2. Makefile
-The Makefile contains instructions for installing packages (specified in requirements.txt), formatting the code (using black formatting), testing the code (running all the sample python code files starting with the term 'Check...' ), and linting the code using pylint
+1. `polars_descriptive_stat_mean`: Calculates the mean value of a specified column.
+2. `polars_descriptive_stat_median`: Computes the median value of a specified column.
+3. `polars_descriptive_stat_std`: Determines the standard deviation of a specified column.
+4. `polars_descriptive_stat_max`: Calculates the maximum value of a specified column.
 
-3. GitHub Actions
-Github Actions uses the main.yml file to call the functions defined in the Makefile based on triggers such as push or pull. Currently, every time a change is pushed onto the repository, it runs the install packages, formatting the code, linting the code, and then testing the code functions
+Additionally, a test file has been provided to validate the accuracy of these descriptive statistics.
 
-4. Requirements.txt
-The requirements.txt file has a list of packages to be installed for any required project. Currently, my requirements file only contains generic python packages, more specific packages can and will be added depending on scope of projects over time.
+## Visualization
+
+To gain insights from the dataset, we have created a scatter plot that visually compares the variables "Miles per Gallon" and "Horsepower." This visualization helps us understand the relationship between these attributes.
+
+## Automation
+
+To streamline the development and collaboration process, we have implemented automation tools and practices:
+
+1. **Devcontainer**: A `.devcontainer` folder is included, which contains two important files: `Dockerfile` and `devcontainer.json`. These files define the development environment settings to ensure consistency among collaborators.
+
+2. **Makefile**: The `Makefile` provides a set of commands for various tasks, including:
+
+   - Installing required packages (specified in `requirements.txt`).
+   - Code formatting using the `black` formatter.
+   - Running tests for functions (file names starting with "Check...").
+   - Code linting with `pylint`.
+
+3. **GitHub Actions**: The project utilizes GitHub Actions, specifically the `main.yml` file, to automate tasks triggered by events like pushes or pull requests. It enforces code formatting, linting, and testing to maintain code quality.
+
+4. **Requirements.txt**: The `requirements.txt` file lists the required Python packages for the project. While it currently contains generic Python packages, it can be extended with more specific dependencies as needed for future project scopes.
+
+This project aims to provide a structured approach to data analysis using the Polars library while maintaining code quality through automation.
