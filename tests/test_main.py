@@ -18,8 +18,7 @@ def test_descriptive_stat():
     # Use assert to compare the calculated stats with the expected stats
     for col in expected_stats["summary"]:
         for column in ["mpg", "hp"]:
-            # Calculate the mean using the function
-            calculated_value = calculated_stats.filter(pl.col("summary") == col).select(column).to_pandas().iloc[0][column]
+            calculated_value = calculated_stats[column].to_pandas().iloc[0]
             expected_value = expected_stats[column][expected_stats["summary"].index(col)]
             assert calculated_value == expected_value
 
