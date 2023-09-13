@@ -1,4 +1,5 @@
 import polars as pl
+from src.main import test_descriptive_stat
 
 def test_descriptive_stat():
     # Import the DataFrame from the CSV file
