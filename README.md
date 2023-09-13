@@ -1,53 +1,34 @@
-# CiCd Automation Template for Python Projects
-### by Rakeen Rouf
-
-[![PythonCiCd](https://github.com/rmr327/cicd_python_template/actions/workflows/python_ci_cd.yml/badge.svg)](https://github.com/rmr327/cicd_python_template/actions/workflows/python_ci_cd.yml)
-
----
+# IDS706-python-template
+### by Titus Robin
 
 **Summary**
 
-This Python GitHub automation template is designed to enhance your development workflow by incorporating a Continuous Integration and Continuous Deployment (CI/CD) automation process. With this template, you can effortlessly set up a CI/CD pipeline for your Python projects, automating routine tasks and ensuring efficient collaboration.
+The purpose of this project is using Polars to load a dataframe. I used a pl.DataFrame as a sample data and test its descriptions using the function polars_descriptive_stats_*(). The visualization on a scatter plot.
 
-By implementing a CI/CD workflow, you can achieve the following benefits:
+# Dataset 
+The [dataset](https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv) is about about various cars Models, Miles per gallon, Cylinders, Gear etc...
 
-- **Automated Testing:** Ensure that your code is thoroughly tested before it gets deployed, reducing the likelihood of bugs or issues in production.
+# Functions 
+The Polars DataFrame is passed into the functions which return:
+- Mean
 
-- **Streamlined Deployment:** Automate the deployment process, making it faster, more reliable, and consistent across different environments.
+# Visualisation
+A scatter plot is generated to compare the variables of Miles per Gallon and Horsepower
+<img width="712" alt="Screen Shot 2023-09-12 at 9 51 11 PM" src="https://github.com/nogibjj/week2_tra29/assets/143838819/ca88f222-4159-4f8e-bb82-3d3729aae623">
 
-- **Code Quality Checks:** Enforce code quality standards and best practices, ensuring that your project maintains high standards of readability, maintainability, and performance.
+Automation
+used takes into Consideration
 
-- **Simplified Collaboration:** Facilitate seamless code sharing and transfer between team members and environments, making it easier to collaborate on projects.
+1. devcontainer
+The .devcontainer folder mainly contains two files -
 
-With the option to develop in the cloud using GitHub Code Spaces, you can further enhance your productivity and eliminate the need for local setup and configuration.
+Dockerfile defines the environment variables - essentially it ensures that all collaborators using the repository are working on the same environment to avoid conflicts and version mismatch issues devcontainer.json is a json file that specifies the environment variables including the installed extensions in the virtual environment
 
----
+2. Makefile
+The Makefile contains instructions for installing packages (specified in requirements.txt), formatting the code (using black formatting), testing the code (running all the sample python code files starting with the term 'Check...' ), and linting the code using pylint
 
-**What is Code Spaces?**
+3. GitHub Actions
+Github Actions uses the main.yml file to call the functions defined in the Makefile based on triggers such as push or pull. Currently, every time a change is pushed onto the repository, it runs the install packages, formatting the code, linting the code, and then testing the code functions
 
-GitHub Code Spaces provides cloud-hosted development environments for your repositories. It allows you to develop entirely in the cloud, eliminating the need for local setup and configuration.
-
----
-
-**Getting Started**
-
-To get started with this template, follow these steps:
-
-1. **Create a New Repository:** 
-   - Click the "Use this template" button or manually create a new repository using this template as a starting point.
-
-2. **Set Up CI/CD:** 
-   - Define your CI/CD workflows by configuring the `.github/workflows/` directory. Modify the workflows to suit your project's specific needs. 
-
-3. **Start Code Space (Optional):**
-   - If you want to develop entirely in the cloud, click the "Code" button on the GitHub repository page and select "Open with Code Spaces". This will launch a cloud-based development environment where you can start coding without any local setup.
-
-4. **Customize Automation:** 
-   - Customize the automation scripts and rules in the `.github/workflows/` directory. Configure issue management, release automation, and code quality checks according to your project requirements.
-
-5. **Documentation:** 
-   - Update the project's documentation to reflect your project's specific setup, workflows, and guidelines.
-
-6. **Requirement.txt:**
-   - Update the `requirements.txt` file to ensure all necessary Python packages have been included.
-
+4. Requirements.txt
+The requirements.txt file has a list of packages to be installed for any required project. Currently, my requirements file only contains generic python packages, more specific packages can and will be added depending on scope of projects over time.
