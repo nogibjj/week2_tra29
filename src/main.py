@@ -14,10 +14,17 @@ def polars_descriptive_stat_max(df: pl.DataFrame, col: str) -> float:
     return df[col].max()
 
 def visualize_data(df):
-    plt.scatter(df["mpg"], df["hp"])
+    # Define custom colors for the scatter plot based on a column (e.g., 'cyl')
+    colors = df['cyl'].apply(lambda x: x * 20)  # Adjust the scaling factor as needed
+    
+    # Define custom marker size based on another column (e.g., 'disp')
+    marker_size = df['disp'].apply(lambda x: x / 10)  # Adjust the scaling factor as needed
+    
+    plt.scatter(df["mpg"], df["hp"], c=colors, cmap='viridis', s=marker_size, alpha=0.7)
     plt.xlabel("Miles Per Gallon")
     plt.ylabel("Horse Power")
     plt.title("How automobile weight changes mileage")
+    plt.colorbar(label='Color')
     plt.show()
 
 if __name__ == '__main__':

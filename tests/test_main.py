@@ -1,4 +1,4 @@
-from main import polars_descriptive_stat_mean,polars_descriptive_stat_median,polars_descriptive_stat_std,visualize_data
+from src.main import polars_descriptive_stat_mean,polars_descriptive_stat_median,polars_descriptive_stat_std,visualize_data
 import polars as pl
 
 def test_descriptive_stat_mean():
