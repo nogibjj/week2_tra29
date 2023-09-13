@@ -2,7 +2,9 @@ import polars as pl
 import matplotlib.pyplot as plt
 
 def descriptive_stat_mean(df: pl.DataFrame, col: str) -> float:
-    return df[col].mean()
+    #return df[col].mean()
+    summary_stats = df.describe()
+    return summary_stats
 
 def visualize_data(df):
     plt.scatter(df["mpg"], df["hp"])
