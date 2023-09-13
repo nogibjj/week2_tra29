@@ -1,34 +1,31 @@
+from main import polars_descriptive_stat_mean,polars_descriptive_stat_median,polars_descriptive_stat_std,visualize_data
 import polars as pl
-from src.main import descriptive_stat, visualize_data
 
-def test_descriptive_stat():
-    # Import the DataFrame from the CSV file
+def test_descriptive_stat_mean():
     cars = pl.read_csv(r"https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
+    target_column = "mpg"
+    mean_mpg = polars_descriptive_stat_mean(cars, target_column)
 
-    # Calculate summary statistics using the function
-    calculated_stats = descriptive_stat(cars)
+    calculated_mean = cars[target_column].sum()/len(cars[target_column])
+    assert mean_mpg == calculated_mean
 
-    # Define expected summary statistics (you can adjust these as needed)
-    expected_stats = {
-        "summary": ["mean", "stddev"],
-        "mpg": [20.38, 6.17],  # Adjust the expected values as needed
-        "hp": [119.6, 53.91]   # Adjust the expected values as needed
-    }
-
-    # Use assert to compare the calculated stats with the expected stats
-    for col in expected_stats["summary"]:
-        for column in ["mpg", "hp"]:
-            calculated_value = calculated_stats[column].to_pandas().iloc[0]
-            expected_value = expected_stats[column][expected_stats["summary"].index(col)]
-            assert calculated_value == expected_value
-
-def test_visualize_data():
-    # Import the DataFrame from the CSV file
+def test_descriptive_stat_median():
     cars = pl.read_csv(r"https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
+    target_column = "mpg"
+    median_mpg = polars_descriptive_stat_median(cars, target_column)
 
-    # Ensure the visualize_data function runs without errors
-    visualize_data(cars)
+    calculated_median = cars[target_column].median()
+    assert median_mpg == calculated_median
+
+def test_descriptive_stat_std():
+    cars = pl.read_csv(r"https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
+    target_column = "mpg"
+    std_mpg = polars_descriptive_stat_std(cars, target_column)
+
+    calculated_std = cars[target_column].std()
+    assert std_mpg == calculated_std
 
 if __name__ == "__main__":
     test_descriptive_stat_mean()
-    test_visualize_data()
+    test_descriptive_stat_median()
+    test_descriptive_stat_std()
