@@ -1,6 +1,7 @@
 #devops
 pandas==2.1.0
 polars==0.19.2
+matplotlib==3.7.2
 black==22.3.0
 click==8.1.3 
 pytest==7.1.3

@@ -23,4 +23,9 @@ if __name__ == '__main__':
     
     # Calculate and print the minimum, mean, and maximum values
     print("Minimum:", polars_descriptive_stat_min(cars, 'mpg'))
-    print("Mean:", polars)
+    print("Maximum:", polars_descriptive_stat_max(cars, 'mpg'))
+    print("Mean:", polars_descriptive_stat_mean(cars, 'mpg'))
+    visualize_data(cars)
+    
+    
+    #print("Mean:", polars)
