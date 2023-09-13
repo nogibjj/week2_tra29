@@ -1,10 +1,9 @@
-from main import polars_descriptive_stat_mean,polars_descriptive_stat_median,polars_descriptive_stat_std,visualize_data
-import polars as pl
+from src.main import descriptive_stat_mean
 
 def test_descriptive_stat_mean():
     cars = pl.read_csv(r"https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv")
     target_column = "mpg"
-    mean_mpg = polars_descriptive_stat_mean(cars, target_column)
+    mean_mpg = descriptive_stat_mean(cars, target_column)
 
     calculated_mean = cars[target_column].sum()/len(cars[target_column])
     assert mean_mpg == calculated_mean
