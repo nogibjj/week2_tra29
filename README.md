@@ -30,6 +30,7 @@ Additionally, a test file has been provided to validate the accuracy of these de
 ## Visualization
 
 To gain insights from the dataset, we have created a scatter plot that visually compares the variables "Miles per Gallon" and "Horsepower." This visualization helps us understand the relationship between these attributes.
+<img width="615" alt="Screen Shot 2023-09-13 at 4 38 39 PM" src="https://github.com/nogibjj/week3_tra29/assets/143838819/87b09499-bde8-4413-ace2-51ba72d7b623">
 
 ## Automation
 
